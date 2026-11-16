@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Design tokens. Light is the base; dark overrides below. */
+:root {
+  --bg: #f2f4ea;
+  --surface: #e7eadb;
+  --ink: #11130a;
+  --muted: #565b47;
+  --line: #cdd2bc;
+  --accent: #c6f432;
+  --accent-ink: #4a5e00;
+  --on-accent: #11130a;
+}
+
+[data-theme="dark"] {
+  --bg: #0a0b07;
+  --surface: #14160e;
+  --ink: #eef0e3;
+  --muted: #9da18e;
+  --line: #272b1c;
+  --accent: #c8fa3c;
+  --accent-ink: #c8fa3c;
+  --on-accent: #0a0b07;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-on-accent: var(--on-accent);
+
+  --font-display: var(--font-bricolage), "Arial Narrow", Arial, sans-serif;
+  --font-sans: var(--font-hanken), system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, Menlo, Consolas, monospace;
+
+  --spacing-gutter: clamp(20px, 4.5vw, 64px);
+  --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --animate-rise: rise 1s var(--ease-soft) both;
+  --animate-drip: drip 1.8s var(--ease-soft) infinite;
+  --animate-blink: blink 1s steps(2) infinite;
+
+  @keyframes rise {
+    from {
+      transform: translateY(105%) rotate(6deg);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @keyframes drip {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(100%);
+    }
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    transition:
+      background-color 0.4s,
+      color 0.4s;
+  }
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent-ink);
+    outline-offset: 4px;
+  }
+}
+
+/* Oversized display type. */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+/* Small mono label used for kickers and metadata. */
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
