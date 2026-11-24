@@ -1,5 +1,5 @@
 import { experienceNote, roles } from "@/content/site";
-import { Reveal } from "./reveal";
+import { Reveal } from "@/components/reveal";
 
 export function Experience() {
   return (

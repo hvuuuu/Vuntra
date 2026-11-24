@@ -12,12 +12,19 @@ export const site = {
   },
 } as const;
 
+type ExternalUrl = `https://${string}`;
+
+export type NavItem = {
+  label: string;
+  href: `#${string}`;
+};
+
 export const navItems = [
   { label: "Work", href: "#work" },
   { label: "Experience", href: "#experience" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
-] as const;
+] as const satisfies readonly NavItem[];
 
 export type ProjectId = "pablo" | "freefined" | "tarot-reader";
 
@@ -26,13 +33,13 @@ export type Project = {
   kicker: string;
   title: string;
   pitch: string;
-  points: string[];
-  stack: string[];
-  live: { label: string; href: string };
-  repo: string;
+  points: readonly string[];
+  stack: readonly string[];
+  live: { label: string; href: ExternalUrl };
+  repo: ExternalUrl;
 };
 
-export const projects: Project[] = [
+export const projects = [
   {
     id: "pablo",
     kicker: "Real-time multiplayer",
@@ -77,7 +84,14 @@ export const projects: Project[] = [
     live: { label: "Get a reading", href: "https://tarotreader-vuntra.vercel.app/" },
     repo: "https://github.com/hvuuuu/TarotReader",
   },
-];
+] as const satisfies readonly Project[];
+
+export type Role = {
+  period: string;
+  company: string;
+  title: string;
+  summary: string;
+};
 
 export const roles = [
   {
@@ -98,15 +112,22 @@ export const roles = [
     title: "Frontend Developer Intern",
     summary: "Redux Toolkit, Ant Design and MUI, integrating REST APIs with the back-end team",
   },
-] as const;
+] as const satisfies readonly Role[];
 
 export const experienceNote =
   "Across these roles I built 10+ pages for a B2C e-commerce platform and a B2B construction marketplace, with role-based UI for contractors, suppliers and admins.";
 
+export type MarqueeRow = readonly string[];
+
 export const marquee = [
   ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux Toolkit", "Zustand"],
   ["Node.js", "Redis", "Firebase", "ONNX Runtime Web", "Vitest", "Docker"],
-] as const;
+] as const satisfies readonly MarqueeRow[];
+
+export type ToolkitGroup = {
+  label: string;
+  items: string;
+};
 
 export const toolkit = [
   { label: "Frontend", items: "React, Next.js, TypeScript, Tailwind CSS, SCSS" },
@@ -115,10 +136,15 @@ export const toolkit = [
   { label: "Back end", items: "Node.js, Express, Next.js API routes, Redis, Firebase" },
   { label: "AI in the product", items: "Gemini via Firebase AI Logic, ONNX Runtime Web" },
   { label: "Testing and tools", items: "Vitest, Git, GitLab CI/CD, Docker, Claude Code" },
-] as const;
+] as const satisfies readonly ToolkitGroup[];
+
+export type Fact = {
+  label: string;
+  value: string;
+};
 
 export const facts = [
   { label: "Based in", value: "Hanoi, Vietnam" },
   { label: "Studied", value: "Computer Science, Swinburne" },
   { label: "English", value: "IELTS 6.5" },
-] as const;
+] as const satisfies readonly Fact[];

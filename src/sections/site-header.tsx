@@ -3,7 +3,7 @@
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 import { navItems, site } from "@/content/site";
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader() {
   const { scrollY, scrollYProgress } = useScroll();

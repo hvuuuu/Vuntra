@@ -1,6 +1,6 @@
 import { site } from "@/content/site";
-import { CopyEmailButton } from "./copy-email-button";
-import { Reveal } from "./reveal";
+import { CopyEmailButton } from "@/components/copy-email-button";
+import { Reveal } from "@/components/reveal";
 
 const linkClass = "inline-flex min-h-11 items-center underline hover:decoration-[3px]";
 

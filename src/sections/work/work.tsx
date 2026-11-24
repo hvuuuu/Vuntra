@@ -4,11 +4,11 @@ import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/rea
 import { useRef, useState, type ReactNode } from "react";
 import { projects, type Project, type ProjectId } from "@/content/site";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { ButtonLink } from "./button-link";
+import { ButtonLink } from "@/components/button-link";
 import { FreeFinedDemo } from "./demos/freefined-demo";
 import { PabloDemo } from "./demos/pablo-demo";
 import { TarotDemo } from "./demos/tarot-demo";
-import { Reveal } from "./reveal";
+import { Reveal } from "@/components/reveal";
 
 const demos: Record<ProjectId, ReactNode> = {
   pablo: <PabloDemo />,

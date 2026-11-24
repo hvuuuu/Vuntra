@@ -1,4 +1,4 @@
-# Vuntra 
+# Vuntra
 
 Personal portfolio of Huy Vu Tran (Vuntra). One page, dark by default, with scroll-driven motion.
 
@@ -27,18 +27,20 @@ Other scripts: `npm run build`, `npm run start`, `npm run lint`, `npm run typech
 ```
 src/
   app/            layout, page, global styles and tokens, icon
-  components/     one file per section, plus shared pieces (Reveal, ButtonLink)
-    demos/        the small illustrations inside each project panel
+  sections/       what the page lays out, one file per section
+    work/         the projects section and its demos (illustrations in each panel)
+  components/     shared building blocks (Reveal, ButtonLink, ThemeToggle, Providers)
   content/site.ts all copy and links: edit this file to change text
   hooks/          useMediaQuery, useIsClient
   fonts/          woff2 files (SIL Open Font License)
+docs/decisions/   why the project is shaped this way (ADRs)
 ```
 
 ## Editing content
 
 All text, links, projects, roles and skills are in `src/content/site.ts`. Components only handle layout and motion.
 
-To add a project, add an entry to `projects` and a matching demo in `src/components/work.tsx`.
+To add a project, add an entry to `projects` and a matching demo in `src/sections/work/work.tsx`. The type checker fails until both exist.
 
 ## Motion notes
 
