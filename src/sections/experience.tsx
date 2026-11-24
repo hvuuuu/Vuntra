@@ -1,11 +1,11 @@
-import { experienceNote, roles } from "@/content/site";
+import { experienceCopy, roles } from "@/content/site";
 import { Reveal } from "@/components/reveal";
 
 export function Experience() {
   return (
     <section id="experience" className="flex flex-col gap-[clamp(28px,4vw,48px)] px-gutter pt-[clamp(88px,12vw,168px)]">
       <Reveal>
-        <h2 className="display text-[clamp(46px,7.4vw,112px)]">Experience</h2>
+        <h2 className="display text-[clamp(46px,7.4vw,112px)]">{experienceCopy.heading}</h2>
       </Reveal>
       <div className="border-b border-line">
         {roles.map((role, index) => (
@@ -23,7 +23,7 @@ export function Experience() {
       </div>
       <Reveal>
         <p className="max-w-[34em] text-[clamp(20px,2vw,28px)] leading-[1.3] font-medium text-pretty">
-          {experienceNote}
+          {experienceCopy.note}
         </p>
       </Reveal>
     </section>

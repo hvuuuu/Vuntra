@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+import { contactCopy, site, socialLinks } from "@/content/site";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { Reveal } from "@/components/reveal";
 
@@ -11,7 +11,7 @@ export function Contact() {
       className="mt-[clamp(96px,13vw,180px)] flex flex-col gap-[clamp(28px,4vw,48px)] rounded-t-[28px] bg-accent px-gutter pt-[clamp(64px,9vw,128px)] pb-7 text-on-accent"
     >
       <Reveal>
-        <h2 className="display text-[clamp(52px,10vw,160px)]">Let&apos;s build something.</h2>
+        <h2 className="display text-[clamp(52px,10vw,160px)]">{contactCopy.heading}</h2>
       </Reveal>
       <Reveal className="flex flex-wrap items-center gap-x-5 gap-y-3.5">
         <a
@@ -24,14 +24,13 @@ export function Contact() {
       </Reveal>
       <div className="flex flex-wrap items-center justify-between gap-x-7 gap-y-2 border-t border-black/25 pt-4.5 text-[15px] font-medium">
         <div className="flex gap-6">
-          <a href={site.links.linkedin} className={linkClass}>
-            LinkedIn
-          </a>
-          <a href={site.links.github} className={linkClass}>
-            GitHub
-          </a>
+          {socialLinks.map((link) => (
+            <a key={link.label} href={link.href} className={linkClass}>
+              {link.label}
+            </a>
+          ))}
         </div>
-        <span>© 2026 {site.name}</span>
+        <span>{contactCopy.copyright}</span>
       </div>
     </footer>
   );

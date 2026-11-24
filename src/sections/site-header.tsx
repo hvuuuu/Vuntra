@@ -2,7 +2,7 @@
 
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
-import { navItems, site } from "@/content/site";
+import { headerCopy, navItems, site } from "@/content/site";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader() {
@@ -28,14 +28,17 @@ export function SiteHeader() {
       >
         <a
           href="#top"
-          aria-label={`${site.handle}, back to top`}
+          aria-label={headerCopy.homeLabel}
           className="inline-flex min-h-11 items-center font-display text-2xl font-extrabold tracking-[-0.04em] no-underline"
         >
           {site.handle}
           <span aria-hidden="true" className="ml-1.5 size-2.5 rounded-full bg-accent ring-1 ring-ink ring-inset" />
         </a>
         <div className="flex items-center gap-[clamp(14px,2.4vw,32px)]">
-          <nav aria-label="Sections" className="hidden gap-[clamp(14px,2.4vw,32px)] text-[15px] font-medium sm:flex">
+          <nav
+            aria-label={headerCopy.navLabel}
+            className="hidden gap-[clamp(14px,2.4vw,32px)] text-[15px] font-medium sm:flex"
+          >
             {navItems.map((item) => (
               <a
                 key={item.href}

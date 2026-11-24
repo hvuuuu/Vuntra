@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { site } from "@/content/site";
+import { heroCopy, site } from "@/content/site";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -45,16 +45,12 @@ export function Hero() {
 
       <div className="flex flex-wrap items-end justify-between gap-x-16 gap-y-7">
         <p className="max-w-[24em] text-[clamp(22px,2.5vw,36px)] leading-[1.22] font-medium tracking-[-0.015em] text-pretty">
-          {site.role} in Hanoi. I build production <span className="text-accent-ink">React and Next.js</span> apps, plus
-          real-time games and AI tools that run in the browser.
+          {site.role} {heroCopy.introLead} <span className="text-accent-ink">{heroCopy.introHighlight}</span>{" "}
+          {heroCopy.introRest}
         </p>
         <div className="flex flex-col items-start gap-3.5">
           <div className="flex gap-5.5 text-base font-medium">
-            {[
-              { label: "Email", href: `mailto:${site.email}` },
-              { label: "LinkedIn", href: site.links.linkedin },
-              { label: "GitHub", href: site.links.github },
-            ].map((link) => (
+            {heroCopy.links.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
@@ -68,7 +64,7 @@ export function Hero() {
             <span aria-hidden="true" className="relative block h-11 w-px overflow-hidden bg-line">
               <span className="absolute inset-0 animate-drip bg-accent-ink" />
             </span>
-            Scroll
+            {heroCopy.scrollHint}
           </div>
         </div>
       </div>

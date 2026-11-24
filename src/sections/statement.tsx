@@ -2,9 +2,7 @@
 
 import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { useRef } from "react";
-
-const PLAIN = "I care most about the state behind the screen: who owns it, who is allowed to see it, and";
-const HIGHLIGHT = "how it stays in sync.";
+import { statementCopy } from "@/content/site";
 
 function Word({
   children,
@@ -30,11 +28,11 @@ export function Statement() {
   const ref = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.85", "end 0.45"] });
 
-  const plain = PLAIN.split(" ");
-  const words = [...plain, ...HIGHLIGHT.split(" ")];
+  const plain = statementCopy.plain.split(" ");
+  const words = [...plain, ...statementCopy.highlight.split(" ")];
 
   return (
-    <section aria-label="What I care about" className="px-gutter py-[clamp(96px,14vw,200px)]">
+    <section aria-label={statementCopy.label} className="px-gutter py-[clamp(96px,14vw,200px)]">
       <p
         ref={ref}
         className="max-w-[15em] font-display text-[clamp(34px,5.6vw,88px)] leading-[1.02] font-semibold tracking-[-0.03em]"

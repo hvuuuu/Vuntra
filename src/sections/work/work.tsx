@@ -2,7 +2,7 @@
 
 import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
 import { useRef, useState, type ReactNode } from "react";
-import { projects, type Project, type ProjectId } from "@/content/site";
+import { projects, workCopy, type Project, type ProjectId } from "@/content/site";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { ButtonLink } from "@/components/button-link";
 import { FreeFinedDemo } from "./demos/freefined-demo";
@@ -46,7 +46,7 @@ function ProjectPanel({ project, index }: { project: Project; index: number }) {
             {project.live.label}
           </ButtonLink>
           <ButtonLink href={project.repo} target="_blank" rel="noreferrer">
-            GitHub
+            {workCopy.repoLabel}
           </ButtonLink>
         </div>
       </div>
@@ -79,16 +79,16 @@ export function Work() {
         className="flex flex-wrap items-end justify-between gap-x-12 gap-y-4 px-gutter pb-[clamp(28px,4vw,48px)]"
       >
         <Reveal>
-          <h2 className="display text-[clamp(46px,7.4vw,112px)]">Selected work</h2>
+          <h2 className="display text-[clamp(46px,7.4vw,112px)]">{workCopy.heading}</h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="max-w-[30ch] text-muted">Three personal projects, each live and open source.</p>
+          <p className="max-w-[30ch] text-muted">{workCopy.intro}</p>
         </Reveal>
       </div>
 
       <section
         ref={ref}
-        aria-label="Projects"
+        aria-label={workCopy.regionLabel}
         data-pinned={pinned}
         className="group relative"
         style={pinned ? { height: `calc(100svh + ${last * 100}vw)` } : undefined}
@@ -108,7 +108,7 @@ export function Work() {
                   className="absolute inset-x-0 -inset-y-px origin-left bg-accent-ink"
                 />
               </span>
-              <span>Keep scrolling</span>
+              <span>{workCopy.progressHint}</span>
             </div>
           )}
           <motion.div

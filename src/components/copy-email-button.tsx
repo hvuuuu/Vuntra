@@ -33,7 +33,9 @@ export function CopyEmailButton({ email }: { email: string }) {
   return (
     <motion.button
       type="button"
-      onClick={copy}
+      onClick={() => {
+        void copy();
+      }}
       onMouseMove={follow}
       onMouseLeave={release}
       style={{ x, y }}

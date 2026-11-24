@@ -114,8 +114,10 @@ export const roles = [
   },
 ] as const satisfies readonly Role[];
 
-export const experienceNote =
-  "Across these roles I built 10+ pages for a B2C e-commerce platform and a B2B construction marketplace, with role-based UI for contractors, suppliers and admins.";
+export const experienceCopy = {
+  heading: "Experience",
+  note: "Across these roles I built 10+ pages for a B2C e-commerce platform and a B2B construction marketplace, with role-based UI for contractors, suppliers and admins.",
+} as const;
 
 export type MarqueeRow = readonly string[];
 
@@ -148,3 +150,55 @@ export const facts = [
   { label: "Studied", value: "Computer Science, Swinburne" },
   { label: "English", value: "IELTS 6.5" },
 ] as const satisfies readonly Fact[];
+
+export type TextLink = {
+  label: string;
+  href: `mailto:${string}` | ExternalUrl;
+};
+
+export const socialLinks = [
+  { label: "LinkedIn", href: site.links.linkedin },
+  { label: "GitHub", href: site.links.github },
+] as const satisfies readonly TextLink[];
+
+export const headerCopy = {
+  homeLabel: `${site.handle}, back to top`,
+  navLabel: "Sections",
+} as const;
+
+export const heroCopy = {
+  // Rendered after site.role, with the highlight in the accent colour.
+  introLead: "in Hanoi. I build production",
+  introHighlight: "React and Next.js",
+  introRest: "apps, plus real-time games and AI tools that run in the browser.",
+  links: [{ label: "Email", href: `mailto:${site.email}` }, ...socialLinks] satisfies readonly TextLink[],
+  scrollHint: "Scroll",
+} as const;
+
+export const statementCopy = {
+  label: "What I care about",
+  plain: "I care most about the state behind the screen: who owns it, who is allowed to see it, and",
+  highlight: "how it stays in sync.",
+} as const;
+
+export const workCopy = {
+  heading: "Selected work",
+  intro: "Three personal projects, each live and open source.",
+  regionLabel: "Projects",
+  progressHint: "Keep scrolling",
+  repoLabel: "GitHub",
+} as const;
+
+export const toolkitCopy = {
+  label: "Toolkit",
+} as const;
+
+export const aboutCopy = {
+  heading: "About",
+  bio: `I'm Vu, also known as ${site.handle}. I studied Computer Science at Swinburne and have shipped frontend work at three companies since 2025.`,
+} as const;
+
+export const contactCopy = {
+  heading: "Let's build something.",
+  copyright: `© 2026 ${site.name}`,
+} as const;

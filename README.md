@@ -20,7 +20,9 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
-Other scripts: `npm run build`, `npm run start`, `npm run lint`, `npm run typecheck`, `npm run format`.
+Other scripts: `npm run build`, `npm run start`, `npm run lint`, `npm run typecheck`, `npm run format`, `npm run format:check`, `npm run test:e2e` (first run `npx playwright install chromium webkit`).
+
+Checks run in three places: a pre-commit hook (lint-staged + typecheck, installed by `npm install`), GitHub Actions on every push and pull request, and Claude Code hooks in `.claude/` that format and lint each file an agent edits.
 
 ## Where things live
 
@@ -38,7 +40,7 @@ docs/decisions/   why the project is shaped this way (ADRs)
 
 ## Editing content
 
-All text, links, projects, roles and skills are in `src/content/site.ts`. Components only handle layout and motion.
+All text, links, projects, roles and skills are in `src/content/site.ts`. Sections and components only handle layout and motion; lint fails if a section contains text of its own. The one exception is the drawn demos in `src/sections/work/demos/`, whose text is part of the illustration.
 
 To add a project, add an entry to `projects` and a matching demo in `src/sections/work/work.tsx`. The type checker fails until both exist.
 
